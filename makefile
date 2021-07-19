@@ -1,0 +1,41 @@
+UID := $(shell id -u)
+GID := $(shell id -g)
+USER := $(UID):$(GID)
+dc := user=$(USER) docker-compose -f ./docker/docker-compose.yml
+
+.PHONY: up
+up:
+	$(dc) up -d --build
+	bash ./docker/php/sql.sh
+	$(dc) exec php /bin/bash -c "composer install" && \
+	$(dc) exec php /bin/bash -c "cp .env.example .env" && \
+	$(dc) exec php /bin/bash -c "php artisan key:generate" && \
+	$(dc) exec php /bin/bash -c "php artisan migrate"
+
+.PHONY: down
+down:
+	$(dc) down
+
+.PHONY: restart
+restart:
+	$(dc) -p lamp restart
+
+.PHONY: rm
+rm:
+	$(dc) down --rmi all
+
+.PHONY: logs
+logs:
+	$(dc) logs -f
+
+.PHONY: db
+db:
+	$(dc) exec db /bin/sh
+
+.PHONY: php
+php:
+	$(dc) exec php /bin/sh
+
+.PHONY: laravel6
+laravel6:
+	$(dc) exec php composer create-project --prefer-dist laravel/laravel ./ "6.*"
