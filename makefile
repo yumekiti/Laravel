@@ -38,4 +38,5 @@ php:
 
 .PHONY: laravel6
 laravel6:
+	mkdir -p ./laravel
 	$(dc) exec php composer create-project --prefer-dist laravel/laravel ./ "6.*"
