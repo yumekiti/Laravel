@@ -3,14 +3,19 @@ GID := $(shell id -g)
 USER := $(UID):$(GID)
 dc := user=$(USER) docker-compose -f ./docker/docker-compose.yml
 
-.PHONY: up
-up:
+.PHONY: init
+init:
 	$(dc) up -d --build
 	bash ./docker/php/sql.sh
 	$(dc) exec php /bin/bash -c "composer install" && \
 	$(dc) exec php /bin/bash -c "cp .env.example .env" && \
 	$(dc) exec php /bin/bash -c "php artisan key:generate" && \
 	$(dc) exec php /bin/bash -c "php artisan migrate"
+
+.PHONY: up
+up:
+	$(dc) up -d --build
+	bash ./docker/php/sql.sh
 
 .PHONY: down
 down:
@@ -38,5 +43,14 @@ php:
 
 .PHONY: laravel6
 laravel6:
+	@make up
 	mkdir -p ./laravel
-	$(dc) exec php composer create-project --prefer-dist laravel/laravel ./ "6.*"
+	$(dc) exec php composer create-project --prefer-dist laravel/laravel . "6.*"
+
+.PHONY: seed
+seed:
+	$(dc) -f ./docker/docker-compose.yml exec php php artisan db:seed
+
+.PHONY: fresh
+fresh:
+	$(dc) -f ./docker/docker-compose.yml exec php php artisan migrate:fresh --seed
