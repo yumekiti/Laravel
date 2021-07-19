@@ -6,7 +6,7 @@ RUN chmod 644 /etc/php/conf.d/php.ini
 COPY --from=composer:2.0 /usr/bin/composer /usr/bin/composer
 
 RUN apt-get update && \
-    apt-get -y install unzip
+    apt-get -y install unzip git
 
 RUN docker-php-ext-install pdo_mysql
 
