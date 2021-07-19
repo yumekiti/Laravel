@@ -43,8 +43,8 @@ php:
 
 .PHONY: laravel6
 laravel6:
-	@make up
 	mkdir -p ./laravel
+	@make up
 	$(dc) exec php composer create-project --prefer-dist laravel/laravel . "6.*"
 
 .PHONY: seed
