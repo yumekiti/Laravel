@@ -1,6 +1,8 @@
 # laravel template
 
-`make install`
+```
+make install
+```
 
 ## laravel env
 
