@@ -1,6 +1,6 @@
 # laravel template
 
-`sudo apt install composer php-xml php7.4`
+`make install`
 
 ## laravel env
 
