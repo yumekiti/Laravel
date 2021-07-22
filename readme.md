@@ -1,5 +1,9 @@
 # laravel template
 
+```
+cp -r docker/ makefile 任意フォルダ
+```
+
 ## laravel env
 
 ```
