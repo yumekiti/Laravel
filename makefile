@@ -45,15 +45,11 @@ php:
 nginx:
 	$(dc) exec nginx /bin/sh
 
-.PHONY: install
-install:
-	sudo apt install composer php-xml php7.4
-
 .PHONY: laravel6
 laravel6:
-	@make install
-	composer create-project --prefer-dist laravel/laravel laravel "6.*"
+	mkdir -p ./laravel
 	@make up
+	$(dc) exec php composer create-project --prefer-dist laravel/laravel . "6.*"
 
 .PHONY: seed
 seed:
