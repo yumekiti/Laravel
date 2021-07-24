@@ -58,3 +58,8 @@ seed:
 .PHONY: fresh
 fresh:
 	$(dc) -f ./docker/docker-compose.yml exec php php artisan migrate:fresh --seed
+
+.PHONY: docker-rm
+docker-rm:
+	docker stop `docker ps -aq` ;
+	docker rm `docker ps -aq`
