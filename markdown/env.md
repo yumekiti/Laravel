@@ -1,11 +1,6 @@
-# laravel template
-
-```
-cp -r docker/ makefile 任意フォルダ
-```
+# sql
 
 ## sql env
-
 ```
 DB_CONNECTION=mysql
 DB_HOST=db

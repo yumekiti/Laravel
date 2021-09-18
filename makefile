@@ -23,7 +23,7 @@ down:
 
 .PHONY: restart
 restart:
-	$(dc) -p lamp restart
+	$(dc) restart
 
 .PHONY: rm
 rm:
