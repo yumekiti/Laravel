@@ -55,7 +55,7 @@ REDIS_PORT=6379
 
 ## make
 ```
-make:event TestEvent
+docker-compose -f ./docker/docker-compose.yml exec php /bin/bash -c "php artisan make:event TestEvent"
 ```
 
 ## app/Events/TestEvent.php

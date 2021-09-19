@@ -10,4 +10,9 @@ RUN apt-get update && \
 
 RUN docker-php-ext-install pdo_mysql
 
+# # laravel-echo
+# RUN apt-get install -y zip git
+# RUN git clone https://github.com/phpredis/phpredis.git /usr/src/php/ext/redis
+# RUN docker-php-ext-install redis
+
 WORKDIR /var/www/

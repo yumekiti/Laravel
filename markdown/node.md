@@ -12,6 +12,6 @@
 コメントアウト消す
 
 ```
-docker-compose exec node /bin/sh -c "npm install && npm run dev"
+$(dc) exec node /bin/sh -c "npm install && npm run dev"
 ```
 makefileに追加
