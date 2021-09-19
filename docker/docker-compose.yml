@@ -40,12 +40,6 @@ services:
     #     tty: true
 
     # # laravel echo
-    # redis:
-    #     image: redis:5
-    #     container_name: redis
-    #     ports:
-    #       - 6379:6379
-
     # laravel-echo-server:
     #     build: ./laravel-echo
     #     container_name: laravel-echo
@@ -53,3 +47,9 @@ services:
     #       - 6001:6001
     #     volumes:
     #       - ./laravel-echo/:/work:cached
+
+    # redis:
+    #     image: redis:5
+    #     container_name: redis
+    #     ports:
+    #       - 6379:6379
