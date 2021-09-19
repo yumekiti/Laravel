@@ -43,6 +43,18 @@ composer require predis/predis
 ```
 コメントアウト消す
 
+## package.json
+```
+-    "socket.io-client": "^4.1.2",
++    "socket.io-client": "^2.4.0",
+```
+
+## index.html
+```
+<meta name="csrf-token" content="{{ csrf_token() }}">
+<script src="{{ mix('js/app.js') }}"></script>
+```
+
 ## make
 ```
 docker-compose -f ./docker/docker-compose.yml exec php /bin/bash -c "php artisan make:event TestEvent"
@@ -53,8 +65,20 @@ docker-compose -f ./docker/docker-compose.yml exec php /bin/bash -c "php artisan
 class TestEvent implements ShouldBroadcast
 ```
 
-## package.json
+## bootstrap.js
 ```
--    "socket.io-client": "^4.1.2",
-+    "socket.io-client": "^2.4.0",
+// laravel-echo
+import Echo from "laravel-echo"
+
+window.io = require('socket.io-client');
+
+window.Echo = new Echo({
+    broadcaster: 'socket.io',
+    host: window.location.host,
+});
+
+window.Echo.private('test-channel')
+    .listen('TestEvent', (e) => {
+        console.log(e)
+    }
 ```

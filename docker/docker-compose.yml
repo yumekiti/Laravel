@@ -31,25 +31,25 @@ services:
         volumes:
             - ./mysql/my.cnf:/etc/mysql/my.cnf
     
-    # node:
-    #     image: node:lts-alpine
-    #     container_name: node
-    #     volumes:
-    #         - ../laravel:/mnt/laravel
-    #     working_dir: /mnt/laravel
-    #     tty: true
+    node:
+        image: node:lts-alpine
+        container_name: node
+        volumes:
+            - ../laravel:/mnt/laravel
+        working_dir: /mnt/laravel
+        tty: true
 
-    # # laravel echo
-    # laravel-echo-server:
-    #     build: ./laravel-echo
-    #     container_name: laravel-echo
-    #     ports:
-    #       - 6001:6001
-    #     volumes:
-    #       - ./laravel-echo/:/work:cached
+    # laravel echo
+    laravel-echo-server:
+        build: ./laravel-echo
+        container_name: laravel-echo
+        ports:
+          - 6001:6001
+        volumes:
+          - ./laravel-echo/:/work:cached
 
-    # redis:
-    #     image: redis:5
-    #     container_name: redis
-    #     ports:
-    #       - 6379:6379
+    redis:
+        image: redis:5
+        container_name: redis
+        ports:
+          - 6379:6379
