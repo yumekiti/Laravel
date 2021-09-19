@@ -16,6 +16,17 @@ REDIS_PASSWORD=null
 REDIS_PORT=6379
 ```
 
+## ライブラリインストール
+```
+npm install --save laravel-echo socket.io-client
+composer require predis/predis
+```
+
+front
+```
+npm install -g laravel-echo-server
+```
+
 ## config/database.php
 ```
 'redis' => [
@@ -45,4 +56,10 @@ docker-compose -f ./docker/docker-compose.yml exec php /bin/bash -c "php artisan
 ## app/Events/TestEvent.php
 ```
 class TestEvent implements ShouldBroadcast
+```
+
+## package.json
+```
+-    "socket.io-client": "^4.1.2",
++    "socket.io-client": "^2.4.0",
 ```
