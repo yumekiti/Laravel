@@ -22,11 +22,6 @@ npm install --save laravel-echo socket.io-client
 composer require predis/predis
 ```
 
-front
-```
-npm install -g laravel-echo-server
-```
-
 ## config/database.php
 ```
 'redis' => [
