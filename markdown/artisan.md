@@ -7,10 +7,10 @@ php artisan make:model Test --migration
 
 ## シーダー
 ```
-php artisan make:seeder GroupTableSeeder
+php artisan make:seeder TestTableSeeder
 ```
 
 ## コントローラー
 ```
-php artisan make:controller GroupController
+php artisan make:controller TestController
 ```
