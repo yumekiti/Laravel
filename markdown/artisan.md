@@ -14,3 +14,8 @@ php artisan make:seeder TestTableSeeder
 ```
 php artisan make:controller TestController
 ```
+
+## ファクトリー
+```
+php artisan make:factory TestFactory
+```
