@@ -8,8 +8,8 @@ services:
         ports:
             - 8080:80
         volumes:
-            - ./nginx/conf.d/default.conf:/etc/nginx/conf.d/default.conf
-            # - ../laravel/public/:/var/www/public/
+            - ./nginx/conf.d/:/etc/nginx/conf.d/
+            # - ../laravel/:/var/www/
         working_dir: /var/www/
   
     php:
