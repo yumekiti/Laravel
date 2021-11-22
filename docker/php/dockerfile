@@ -1,4 +1,5 @@
 FROM php:7.4-fpm
+# FROM php:8.0-fpm
 
 COPY ./php.ini /etc/php/conf.d/php.ini
 RUN chmod 644 /etc/php/conf.d/php.ini

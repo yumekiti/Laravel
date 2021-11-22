@@ -51,6 +51,12 @@ laravel6:
 	@make up
 	$(dc) exec php composer create-project --prefer-dist laravel/laravel . "6.*"
 
+.PHONY: laravel8
+laravel8:
+	mkdir -p ./laravel
+	@make up
+	$(dc) exec php composer create-project --prefer-dist laravel/laravel . "8.*"
+
 .PHONY: seed
 seed:
 	$(dc) -f ./docker/docker-compose.yml exec php php artisan db:seed
@@ -63,3 +69,12 @@ fresh:
 docker-rm:
 	docker stop `docker ps -aq` ;
 	docker rm `docker ps -aq`
+
+.PHONY: docker-clean
+docker-clean:
+	docker stop `docker ps -aq` ; \
+	docker rm `docker ps -aq` ; \
+	docker rmi `docker images -q` ; \
+	docker volume prune -f ; \
+	docker network prune -f ; \
+	docker system prune -f
