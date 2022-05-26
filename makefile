@@ -51,11 +51,11 @@ laravel6:
 	@make up
 	$(dc) exec php composer create-project --prefer-dist laravel/laravel . "6.*"
 
-.PHONY: laravel8
-laravel8:
+.PHONY: laravel9
+laravel9:
 	mkdir -p ./laravel
 	@make up
-	$(dc) exec php composer create-project --prefer-dist laravel/laravel . "8.*"
+	$(dc) exec php composer create-project --prefer-dist laravel/laravel . "9.*"
 
 .PHONY: seed
 seed:
